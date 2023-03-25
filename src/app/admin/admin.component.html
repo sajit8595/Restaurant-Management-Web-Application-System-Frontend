@@ -1,0 +1,32 @@
+<!-- <h1 class="text-center">RESTAURANT MANAGEMENT SYSTEM</h1> -->
+
+<div>
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="mx-5">
+        <ul class="navbar-nav">
+
+          <a class="navbar-brand" routerLinkActive="active" routerLink="/admin">Admin</a>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/admin/book-table">Book Table</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/admin/edit-menu">Edit Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/admin/generate-payment">Payment</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>
+
+

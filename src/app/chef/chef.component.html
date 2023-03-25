@@ -1,0 +1,50 @@
+<div class="container text-center mt-2">
+
+    <h2 class="btn btn-light btn-lg" (click)="ngOnInit()">Chef</h2>
+
+    <mat-tab-group>
+        <mat-tab label="Queued Items">
+            <br>
+            <div class="d-flex align-content-around flex-wrap">
+                <div *ngFor="let order of orderData">
+                    <div *ngIf="order.status === 'QUEUE'" class="card p-3" style="width: 20rem;">
+                        <app-chef-status [order]="order"></app-chef-status>
+                    </div>
+                </div>
+
+            </div>
+
+        </mat-tab>
+
+        <mat-tab label="In Cooking Items">
+            <br>
+
+            <div class="d-flex align-content-around flex-wrap">
+                <div *ngFor="let order of orderData">
+                    <div *ngIf="order.status === 'COOKING'" class="card p-3" style="width: 20rem;">
+                        <app-chef-status [order]="order"></app-chef-status>
+                    </div>
+                </div>
+            </div>
+
+        </mat-tab>
+
+        <mat-tab label="Ready Items">
+            <br>
+
+            <div class="d-flex align-content-around flex-wrap">
+                <div *ngFor="let order of orderData">
+                    <div *ngIf="order.status === 'READY'" class="card p-3" style="width: 20rem;">
+                        <app-chef-status [order]="order"></app-chef-status>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Menu">
+            <div style="width:60%; margin-left: 20%;">
+                <app-show-menu></app-show-menu>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

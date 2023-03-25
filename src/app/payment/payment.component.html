@@ -1,0 +1,132 @@
+<div class="row">
+    <div class="col border">
+        <h3 class="m-2 text-center">Payment</h3>
+        <br>
+
+
+        <cdk-accordion>
+            <div *ngFor="let table of tableData; let index = index;">
+                <div *ngIf="table.booked">
+
+                    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item back"
+                        role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+                        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index">
+
+                        <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                            <h6>Table #{{ table.id }} - Customer #{{table.customerId}} </h6>
+                            <span class="example-accordion-item-description">
+                                Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                            </span>
+                        </div>
+                        <div class="example-accordion-item-body text-center" role="region"
+                            [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' + index"
+                            [attr.aria-labelledby]="'accordion-header-' + index">
+
+                            <h6 class="mb-2 text-muted">Table is Booked with Customer ID #{{table.customerId}} and Name
+                            </h6>
+
+                            <app-ordered-list [customerId]="table.customerId"></app-ordered-list>
+
+                            <span>Overall experience of Customer</span><br>
+                            <mat-radio-group aria-label="Select an option" [(ngModel)]="review">
+                                <mat-radio-button value="Amazing">Amazing</mat-radio-button>
+                                <mat-radio-button value="Good">Good</mat-radio-button>
+                                <mat-radio-button value="Average">Average</mat-radio-button>
+                                <mat-radio-button value="Bad">Bad</mat-radio-button>
+                            </mat-radio-group>
+                            <br>
+
+                            <button class="btn btn-warning" (click)="generatePayment(table.id)"> Generate
+                                Payment</button>
+                        </div>
+                    </cdk-accordion-item>
+                </div>
+            </div>
+
+        </cdk-accordion>
+    </div>
+
+    <div class="col border">
+        <h3 class="m-2 text-center">Customer</h3>
+        <h6 class="text-center">Survey of all customers</h6>
+
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Review</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Progress</th>
+                </tr>
+                
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>Amazing</th>
+                    <th>{{this.survey['Amazing']}}</th>
+                    <th><mat-progress-bar mode="determinate" value="{{this.survey['Amazing']*100/this.customerData.length}}" class="m-2"></mat-progress-bar></th>
+                </tr>
+                <tr>
+                    <th>Good</th>
+                    <th>{{this.survey['Good']}}</th>
+
+                    <th><mat-progress-bar mode="determinate" value="{{this.survey['Good']*100/this.customerData.length}}" class="m-2"></mat-progress-bar></th>
+                </tr>
+                <tr>
+                    <th>Average</th>
+                    <th>{{this.survey['Average']}}</th>
+
+                    <th><mat-progress-bar mode="determinate" value="{{this.survey['Average']*100/this.customerData.length}}" class="m-2"></mat-progress-bar></th>
+                </tr>
+                <tr>
+                    <th >Bad</th>
+                    <th>{{this.survey['Bad']}}</th>
+
+                    <th><mat-progress-bar mode="determinate" value="{{this.survey['Bad']*100/this.customerData.length}}" class="m-2"></mat-progress-bar></th>
+                </tr>
+            </tbody>
+
+        </table>
+<!-- 
+        <div class="d-flex justify-content-between mx-4 my-1">
+
+            <h6 class="font-weight-bold btn btn-success btn-lg"> Amazing: {{this.survey['Amazing']}} </h6>
+            <h6 class="font-weight-bold btn btn-primary btn-lg">Good: {{this.survey['Good']}} </h6>
+            <h6 class="font-weight-bold btn btn-info btn-lg">Average: {{this.survey['Average']}} </h6>
+            <h6 class="font-weight-bold btn btn-danger btn-lg"> Bad: {{this.survey['Bad']}} </h6>
+        </div> -->
+
+        <cdk-accordion class="">
+            <div *ngFor="let customer of customerData; let index = index;">
+                <div *ngIf="customer.billPaid">
+
+                    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item back"
+                        role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+                        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index">
+
+                        <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                            <h6>Customer #{{ customer.id }} </h6>
+                            <span class="example-accordion-item-description">
+                                Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                            </span>
+                        </div>
+                        <div class="example-accordion-item-body text-center" role="region"
+                            [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' + index"
+                            [attr.aria-labelledby]="'accordion-header-' + index">
+                            <h6 class="mb-2 text-muted">Customer ID #{{customer.id}} and Customer Name</h6>
+                            <app-ordered-list [customerId]="customer.id"></app-ordered-list>
+                            
+                            <span *ngIf="customer.review === 'Amazing'">Overall experience of Customer is <mark style="background-color: rgb(107, 241, 107);">{{customer.review}}</mark> </span>
+                            <span *ngIf="customer.review === 'Good'">Overall experience of Customer is <mark style="background-color: rgb(247, 247, 113);">{{customer.review}}</mark> </span>
+                            <span *ngIf="customer.review === 'Average'">Overall experience of Customer is <mark style="background-color: rgb(235, 189, 104);">{{customer.review}}</mark> </span>
+                            <span *ngIf="customer.review === 'Bad'">Overall experience of Customer is <mark style="background-color: rgb(238, 85, 85);">{{customer.review}}</mark> </span>
+
+
+                        </div>
+                    </cdk-accordion-item>
+                </div>
+            </div>
+
+        </cdk-accordion>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<h6>Dish: {{order.menu}}</h6>
+<div class="card-text">
+    <p>Order Id: {{order.id}}, Dish Id: {{order.menuId}}</p>
+
+    <mat-radio-group aria-label="Select an option" [(ngModel)] = "order.status" (ngModelChange)="changeStatus()">
+        <mat-radio-button value="QUEUE">Queue</mat-radio-button>
+        <mat-radio-button value="COOKING">Cooking</mat-radio-button>
+        <mat-radio-button value="READY">Ready</mat-radio-button>
+      </mat-radio-group>
+
+</div>

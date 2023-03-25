@@ -1,0 +1,55 @@
+<h5 *ngIf="customerData.name" (click)="ngOnInit()" class="btn btn-light">{{customerData.name.toUpperCase()}} </h5>
+
+<h6>Order placed are</h6>
+<table class="table table-hover table-bordered">
+    <thead class="container-sm text-center ">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Dish Id</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of custHash; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <th> {{order.menu}} </th>
+            <th> {{order.menuId}} </th>
+            <th> {{order.menuRate}} </th>
+            <th>{{order.quant}}</th>
+            <th *ngIf="order.status === 'QUEUE'" style="background-color: rgb(237, 107, 107)">{{order.status}}</th>
+            <th *ngIf="order.status === 'COOKING'" style="background-color: rgb(237, 237, 93)">{{order.status}}</th>
+            <th *ngIf="order.status === 'READY'" style="background-color: rgb(99, 236, 99)">{{order.status}}</th>
+
+        </tr>
+        <tr>
+            <th></th>
+            <th>CGST/SGST</th>
+            <th>5%</th>
+            <th>{{this.total}} + {{this.total*0.05}}</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <th></th>
+            <th>Total</th>
+            <th></th>
+            <th>{{this.total*1.05}}</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<div *ngIf="show" class="d-flex flex-column" style="width: max-content; margin-left: 33%;" >
+    <mat-form-field >
+        <mat-label>Dish Id</mat-label>
+        <input matInput class="form" type="text" name="id" [(ngModel)]="menuId" placeholder="Enter Id to Add" required>
+    </mat-form-field>
+    <button class="btn btn-success" (click)="addOrder()"> Add Order</button>
+</div>

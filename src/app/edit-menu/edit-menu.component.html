@@ -1,0 +1,67 @@
+<div class="mt-2 text-center">
+
+    <div class="row">
+        <div class="col-sm-9 ">
+            <h2 class="m-3">Menu</h2>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Dish</th>
+                        <th scope="col">Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dish of dishes; let i = index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{dish.id}}</td>
+                        <td>{{dish.name}}</td>
+                        <td>{{dish.rate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm ">
+            <div class="row">
+                <div class="col-sm mb-5">
+                    <form (ngSubmit)="addDish()" class="border border-success text-center p-4">
+                        <h5 class="">Add the Dish</h5>
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput type="text" id="name" name="name" placeholder="Enter Dish Name"
+                                [(ngModel)]="dishData.name" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Rate</mat-label>
+                            <input matInput type="text" id="rate" name="rate" placeholder="Enter Dish Rate"
+                                [(ngModel)]="dishData.rate" required>
+                        </mat-form-field>
+                        <button class="btn btn-success" type="submit">Add Dish</button>
+
+                    </form>
+                </div>
+                <div class="col-sm mb-5">
+                    <form (ngSubmit)="removeDish()" class="border border-danger text-center p-4">
+                        <h5 class="">Remove the Dish</h5>
+                        <mat-form-field>
+                            <mat-label>Dish Id</mat-label>
+                            <input matInput type="text" id="id" name="id" placeholder="Enter Dish Id"
+                                [(ngModel)]="removeId" required>
+                        </mat-form-field>
+                        <button class="btn btn-danger" type="submit">Remove Dish</button>
+                    </form>
+                </div>
+
+                <div class="col-sm">
+                    <button class="btn btn-danger" (click)="removeAllDish()">Remove all Dish</button>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

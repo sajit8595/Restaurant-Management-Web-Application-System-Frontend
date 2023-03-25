@@ -1,0 +1,61 @@
+<div class="mt-2 text-center bg-img">
+
+    <div class="row">
+
+        <div class="col-sm-9 mb-3">
+            <br>
+            <h2>Tables</h2>
+            <div class="d-flex align-content-around flex-wrap">
+
+                <div *ngFor="let table of tableData" class="text-center">
+
+                    <div *ngIf="!table.booked" class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Table {{table.id}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Table is Free</h6>
+                            <p class="card-text"></p>
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput class="form" type="text" name="tableName" [(ngModel)]="table.name"
+                                    placeholder="Enter Customer Name" required>
+                            </mat-form-field>
+                            <button class="btn btn-success" (click)="bookTable(table.id, table.name)">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm mb-4">
+                    <form (ngSubmit)="addTable()" class="border border-success text-center p-3">
+                        <h5 class="">Add Table</h5>
+                        <button class="btn btn-success" type="submit">Add Table</button>
+                    </form>
+                </div>
+                <div class="col-sm mb-4">
+                    <form (ngSubmit)="removeTable()" class="border border-danger text-center p-4">
+                        <h5 class="">Remove Table</h5>
+                        <mat-form-field>
+                            <mat-label>Table Id</mat-label>
+                            <input matInput type="text" id="id" name="id" placeholder="Enter Table ID"
+                                [(ngModel)]="removeId" required>
+                        </mat-form-field>
+                        <br><br>
+                        <button class="btn btn-danger" type="submit">Remove Table</button>
+                    </form>
+                </div>
+
+                <div class="col-sm">
+                    <button class="btn btn-danger" (click)="removeAllTables()">Remove all Tables</button>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

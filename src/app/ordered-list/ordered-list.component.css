@@ -1,0 +1,7 @@
+.table{
+    background: linear-gradient(0.25turn, #e4f9fd, #f3f5e3, #f1fdf4);
+}
+
+.table-bordered{
+     border-color: azure;
+}

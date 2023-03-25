@@ -1,0 +1,47 @@
+<header class="container text-center p-2 background-img">
+
+    <h2 type = 'button' class="btn btn-dark btn-lg" (click)="ngOnInit()">Waiter</h2>
+
+    <div class="row border">
+        <div class="col border">
+
+            <h3 class="mt-3 text-center">Tables</h3>
+
+            <cdk-accordion class="example-accordion">
+                <div *ngFor="let table of tableData; let index = index;">
+                    <div *ngIf="table.booked">
+                        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item"
+                            role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+                            [attr.aria-expanded]="accordionItem.expanded"
+                            [attr.aria-controls]="'accordion-body-' + index">
+
+
+                            <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                                <h6>Table #{{ table.id }} </h6>
+                                <span class="example-accordion-item-description">
+                                    Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                                </span>
+                            </div>
+                            <div class="example-accordion-item-body text-center" role="region"
+                                [style.display]="accordionItem.expanded ? '' : 'none'"
+                                [attr.id]="'accordion-body-' + index"
+                                [attr.aria-labelledby]="'accordion-header-' + index">
+                                
+                                <h6>Table booked by customer ID {{table.customerId}} and name</h6>
+                                <app-ordered-list [customerId]="table.customerId" [show]="true"></app-ordered-list>
+                            </div>
+                        </cdk-accordion-item>
+                    </div>
+                </div>
+
+            </cdk-accordion>
+        </div>
+        <div class="col-sm border">
+            <app-show-menu></app-show-menu>
+        </div>
+    </div>
+
+
+</header>
+
+

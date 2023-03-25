@@ -1,0 +1,7 @@
+.table-bordered{
+    border-color: darkgrey;
+}
+
+.table{
+    background: linear-gradient(0.65turn, #e1f3f5, #fafaee, #e1ebd8);
+}

@@ -1,0 +1,72 @@
+/* login.component.css */
+
+.container {
+  margin-top: 10%;
+}
+
+mat-card {
+  width: 350px;
+  padding: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  width: 100%;
+}
+
+
+/* .form-signin {
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  
+  .form-signin img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .form-signin label {
+    font-weight: normal;
+  }
+  
+  .custom-control-label::before,
+  .custom-control-label::after {
+    top: .8rem;
+  }
+  
+  .custom-control-label::before {
+    border-radius: 0.25rem;
+  }
+  
+  .custom-control-label::after {
+    background-color: #fff;
+    border: 0.25rem solid #007bff;
+    border-radius: 0.25rem;
+  }
+  
+  .custom-control-input:checked~.custom-control-label::after {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+   */
+
+

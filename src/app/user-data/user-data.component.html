@@ -1,0 +1,69 @@
+<div class="mt-2 text-center">
+
+    <div class="row">
+        <div class="col-sm-9 ">
+            <h2 class="m-3">Users</h2>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Access</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{user.id}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{accessArray[parseInt(user.access)]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm ">
+            <div class="row">
+                <div class="col-sm mb-5">
+                    <form (ngSubmit)="addUser()" class="border border-success text-center p-4">
+                        <h5 class="">Add the User</h5>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput type="text" id="email" name="email" placeholder="Enter User Email"
+                                [(ngModel)]="userData.email" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input matInput type="text" id="password" name="password" placeholder="Enter User Password"
+                                [(ngModel)]="userData.password" required>
+                        </mat-form-field><br>
+                        <span>Give the Access of</span><br>
+                            <mat-radio-group aria-label="Select an option" name = "access" [(ngModel)] = "userData.access">
+                                <mat-radio-button value=1>Admin</mat-radio-button>
+                                <mat-radio-button value=2>Waiter</mat-radio-button>
+                                <mat-radio-button value=3>Chef</mat-radio-button>
+                            </mat-radio-group>
+                        <button class="btn btn-success" type="submit">Add User</button>
+
+                    </form>
+                </div>
+                <div class="col-sm mb-5">
+                    <form (ngSubmit)="removeUser()" class="border border-danger text-center p-4">
+                        <h5 class="">Remove the User</h5>
+                        <mat-form-field>
+                            <mat-label>User Id</mat-label>
+                            <input matInput type="text" id="id" name="id" placeholder="Enter User Id"
+                                [(ngModel)]="removeId" required>
+                        </mat-form-field>
+                        <button class="btn btn-danger" type="submit">Remove User</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+
+<div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Login
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput type="email" name="email" [(ngModel)]="user.email" required>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" name="password" [(ngModel)]="user.password" required>
+              <!-- <mat-icon matSuffix (click)="showPassword = !showPassword">
+                {{ showPassword ? 'visibility_off' : 'visibility' }}
+              </mat-icon> -->
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Login</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+</div>
